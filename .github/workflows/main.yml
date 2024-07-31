@@ -30,9 +30,8 @@ jobs:
           git config --global user.email 'jack04309487@gmail.com'
           git config --global user.name 'shark-speare'
           git add README.md
-          git commit -m "更新天氣資訊($time)"
+          git commit -m "更新天氣資訊(${{ steps.time.outputs.time}})"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          time: ${{ steps.time.outputs.time}}
           
