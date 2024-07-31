@@ -4,7 +4,7 @@ name: 各地天氣狀況
 on:
 
   schedule:
-    - cron: '* 0/8 * * *'
+    - cron: '1 0/2 * * *'
 
   workflow_dispatch:
 
