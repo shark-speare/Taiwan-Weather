@@ -1,0 +1,36 @@
+name: 各地天氣狀況
+
+
+on:
+
+  schedule:
+    - cron: '* 0/8 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: 安裝Python
+        run: actions/setup-python@v5.1.1
+
+      - name: 編輯檔案
+        run: python main.py
+
+      - name: 送出變更
+
+        run: |
+          git config --global user.email 'jack04309487@gmail.com'
+          git config --global user.name 'shark-speare'
+          git add README.md
+          git commit -m "更新天氣資訊"
+          git push
+        env:
+          email: ${{ secrets.EMAIL }}
+          name: ${{ secrets.NAME }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
