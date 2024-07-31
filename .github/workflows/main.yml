@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: 安裝Python
-        run: actions/setup-python@v5.1.1
+        uses: actions/setup-python@v5.1.1
 
       - name: 編輯檔案
         run: python main.py
