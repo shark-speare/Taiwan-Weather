@@ -24,13 +24,19 @@ jobs:
         env:
           WEATHER: ${{ secrets.WEATHER }}
 
+      - name: 取得時間
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: 'MM/DD HH:mm'
+          utcOffset: '+08:00'
       - name: 送出變更
 
         run: |
           git config --global user.email 'jack04309487@gmail.com'
           git config --global user.name 'shark-speare'
           git add README.md
-          git commit -m "更新天氣資訊(${{ steps.time.outputs.time}})"
+          git commit -m "更新天氣資訊(${{ steps.current-time.outputs.formattedTime}})"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
