@@ -21,16 +21,20 @@ jobs:
 
       - name: 編輯檔案
         run: python main.py
+        env:
+          WEATHER: ${{ secrets.WEATHER }}
 
       - name: 送出變更
 
         run: |
-          git config --global user.email 'jack04309487@gmail.com'
-          git config --global user.name 'shark-speare'
+          git config --global user.email $email
+          git config --global user.name $username
           git add README.md
-          git commit -m "更新天氣資訊"
+          git commit -m "更新天氣資訊($time)"
           git push
         env:
-          email: ${{ secrets.EMAIL }}
-          name: ${{ secrets.NAME }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          email: ${{ vars.email }}
+          username: ${{ vars.username }}
+          time: ${{ steps.time.outputs.time}}
+          
