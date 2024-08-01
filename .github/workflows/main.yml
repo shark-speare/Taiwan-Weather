@@ -36,8 +36,12 @@ jobs:
           git config --global user.email 'jack04309487@gmail.com'
           git config --global user.name 'shark-speare'
           git add README.md
-          git commit -m "更新天氣資訊(${{ steps.current-time.outputs.formattedTime}})"
-          git push
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "更新天氣資訊(${{ steps.current-time.outputs.formattedTime}})"
+            git push
+          else
+            echo "沒有變更，不需要提交。"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
