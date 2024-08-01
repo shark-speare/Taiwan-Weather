@@ -39,10 +39,10 @@ for url in apis:
     # 合併每一個描述
     lines = data['parameterSet']['parameter']
     description = '\n\n'.join([content['parameterValue'] for content in lines])
-    description.replace("~","\~")
+    formatted_description = description.replace("~","\~")
 
     #加入最終列表
-    finalList.append(f"# {location}\n{description}")
+    finalList.append(f"# {location}\n{formatted_description}")
 
     print(f"已擷取{location}資料")
 
