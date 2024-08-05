@@ -45,7 +45,7 @@ for url in apis:
                                                            
 
     #加入最終列表
-    finalList.append(f"# {location}\n{formatted_description}")
+    finalList.append(f"# {location}\n{full_description_2}")
 
     print(f"已擷取{location}資料")
 
