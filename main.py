@@ -40,6 +40,9 @@ for url in apis:
     lines = data['parameterSet']['parameter']
     description = '\n\n'.join([content['parameterValue'] for content in lines])
     formatted_description = description.replace("~","\~")
+    full_description = formatted_description.replace('（','(')
+    full_description_2 = formatted_description.replace("）")')
+                                                           
 
     #加入最終列表
     finalList.append(f"# {location}\n{formatted_description}")
